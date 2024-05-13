@@ -65,7 +65,7 @@ def tagPush(String image_name, String dockerhub_image_tag){
 // Deploy to container to Staging
 def deployBuild(String projectName, String image_name) {
   String projectname = projectName.toLowerCase()
-  sh "docker rm -f ${image_name} && docker compose -p ${projectname} up ${image_name} -d"
+  sh "cd ${projectName} &&  docker rm -f ${image_name} && docker compose -p ${projectname} up ${image_name} -d"
 }
 
 
