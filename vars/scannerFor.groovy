@@ -5,7 +5,7 @@ def checkoutCode() {
 
 // Git Repositorey Scanning using Trivy
 def repo(String repo) {
-  sh 'trivy repository --exit-code 0 --no-progress --severity HIGH,CRITICAL --scanners vuln ${repo} | tee -a trivyrepo.txt'
+  sh "trivy repository --exit-code 0 --no-progress --severity HIGH,CRITICAL --scanners vuln ${repo} | tee -a trivyrepo.txt"
 }
 
 // Filesystem Scanner using Trivy
@@ -35,10 +35,7 @@ def owasp() {
 
 // Install NPM Dependencies
 def installDeps(String fromDir) {
-  sh '''
-    cd ${fromDir}
-    npm install
-  '''
+  sh "cd ${fromDir} && npm install"
 }
 
 // Build Docker Image
