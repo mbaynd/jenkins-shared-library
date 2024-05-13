@@ -43,8 +43,8 @@ def owasp() {
 
 
 // Build Docker Image
-def docker_build(String composeProjectName) {
-  sh "docker compose -p ${composeProjectName} build --force-rm --no-cache"
+def docker_build(String projectName) {
+  sh "cd ${projectName} && docker compose -p ${projectName} build --force-rm --no-cache"
 }
 
 // Docker Image Scanning using Trivy
@@ -62,8 +62,8 @@ def tagPush(String credentialsId, String toolName, String image_name, dockerhub_
 }
 
 // Deploy to container to Staging
-def deployBuild(String image_name) {
-  sh "docker rm -f ${image_name} && docker compose -p taskmanager up ${image_name} -d"
+def deployBuild(String projectName, String image_name) {
+  sh "docker rm -f ${image_name} && docker compose -p ${projectName} up ${image_name} -d"
 }
 
 
