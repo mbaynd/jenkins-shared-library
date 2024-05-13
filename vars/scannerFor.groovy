@@ -1,6 +1,6 @@
 // Checkout the Repository
-def checkoutCode() {
-    checkout scm
+def checkoutCode(String repo, projectName) {
+    sh "git clone ${repo} ${projectName} && cd ${projectName}"
 }
 
 // Git Repositorey Scanning using Trivy
@@ -23,7 +23,8 @@ def sast(String projectName) {
 
 // Install NPM Dependencies
 def installDeps(String repo, String fromDir) {
-  sh "git clone ${repo} && cd ${fromDir} && npm install"
+  sh "echo $(pwd)"
+  sh "cd ${fromDir} && npm install"
 }
 
 
