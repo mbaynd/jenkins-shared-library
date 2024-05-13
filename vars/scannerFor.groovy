@@ -14,12 +14,19 @@ def fs() {
 }
 
 // Static Code Analysis with SonarQube
-def sast(String envSonarName, String projectName, String projectKey) {
+def sast(String projectName) {
 
   withSonarQubeEnv('sonar') {
-    sh "/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectKey}"
+    sh "/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName}"
   }
 }
+
+// Install NPM Dependencies
+def installDeps(String fromDir) {
+  sh "cd ${fromDir} && npm install"
+}
+
+
 
 // OWASP Dependency-Check Vulnerabilities
 def owasp() { 
@@ -33,10 +40,6 @@ def owasp() {
   dependencyCheckPublisher pattern: 'dependency-check-report.xml'
 }
 
-// Install NPM Dependencies
-def installDeps(String fromDir) {
-  sh "cd ${fromDir} && npm install"
-}
 
 // Build Docker Image
 def docker_build(String composeProjectName) {
