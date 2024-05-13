@@ -54,8 +54,8 @@ def image(String image_name) {
 }
 
 // Docker Tag Image & Push
-def tagPush(String credentialsId, String toolName, String image_name, dockerhub_image_tag){
-  withDockerRegistry(credentialsId: ${credentialsId}, toolName: ${toolName}){   
+def tagPush(String image_name, String dockerhub_image_tag){
+  withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
       sh "docker tag ${image_name} ${dockerhub_image_tag}"
       sh 'echo "salafiyAAA" | docker login -u mbaynd --password-stdin'
       sh "docker push ${dockerhub_image_tag}"
