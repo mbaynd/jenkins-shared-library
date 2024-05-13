@@ -22,8 +22,8 @@ def sast(String projectName) {
 }
 
 // Install NPM Dependencies
-def installDeps(String fromDir) {
-  sh "cd ${fromDir} && npm install"
+def installDeps(String repo, String fromDir) {
+  sh "git clone ${repo} && cd ${fromDir} && npm install"
 }
 
 
