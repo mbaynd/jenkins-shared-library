@@ -16,7 +16,7 @@ def fs() {
 // Static Code Analysis with SonarQube
 def sast(String envSonarName, String projectName, String projectKey) {
 
-  withSonarQubeEnv(${envSonarName}) {
+  withSonarQubeEnv('sonar') {
     sh "/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectKey}"
   }
 }
