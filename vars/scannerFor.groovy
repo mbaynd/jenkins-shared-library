@@ -45,7 +45,7 @@ def owasp() {
 // Build Docker Image
 def docker_build(String projectName) {
   String projectname = projectName.toLowerCase()
-  sh "cd ${projectname} && docker compose -p ${projectname} build --force-rm --no-cache"
+  sh "cd ${projectName} && docker compose -p ${projectname} build --force-rm --no-cache"
 }
 
 // Docker Image Scanning using Trivy
