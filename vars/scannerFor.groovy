@@ -23,7 +23,7 @@ def sast(String projectName) {
 
 // Install NPM Dependencies
 def installDeps(String repo, String fromDir) {
-  sh "echo $(pwd)"
+  sh 'pwd'
   sh "cd ${fromDir} && npm install"
 }
 
