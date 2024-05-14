@@ -65,11 +65,12 @@ def tagPush(String image_name, String dockerhub_image_tag){
 // Deploy to container to Staging
 def deployBuild(String projectName, String service) {
   String projectname = projectName.toLowerCase()
-  sh "cd ${projectName} &&  docker rm -f ${image_name} && docker compose -p ${projectname} up ${service} -d"
+  String container_name = projectname + "-" + service
+  sh "cd ${projectName} &&  docker rm -f ${container_name} && docker compose -p ${projectname} up ${service} -d"
 }
 
 // DAST - Dynamic Application Security Testing
-def testDeploy(String targetURL) {
+def scanDeployment(String targetURL) {
   sh "docker run -t ghcr.io/zaproxy/zaproxy zap-baseline.py -t ${targetURL}"
 }
 
