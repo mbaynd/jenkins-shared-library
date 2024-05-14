@@ -83,7 +83,7 @@ def deployBuild(String projectName, String service) {
 
 // DAST - Dynamic Application Security Testing
 def scanDeployment(String targetURL) {
-  sh "docker run -t ghcr.io/zaproxy/zaproxy zap-baseline.py -t ${targetURL} -j -a -r stable-full-scan-report.html 2> /dev/null; (($? == 2)) && echo 'Done' >&2 "
+  sh 'docker run -t ghcr.io/zaproxy/zaproxy zap-baseline.py -t ${targetURL} -j -a -r stable-full-scan-report.html 2> /dev/null; (($? == 2)) && echo "Done" >&2'
 }
 
 
