@@ -6,9 +6,6 @@ def checkoutCode(String repo, branch) {
 }
 // Gitub scanning for secrets in Repository
 def scan_secrets(String repo) {
-  withCredentials([string(credentialsId: 'DOCKER_HUB_USER', variable: 'DOCKER_HUB_USER'), string(credentialsId: 'DOCKER_HUB_PWD', variable: 'DOCKER_HUB_PWD')]) {    
-      sh 'echo ${DOCKER_HUB_PWD} --------> ${DOCKER_HUB_USER} '
-  }
   sh "docker run --rm -t -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --org=trufflesecurity --repo ${repo}"
 }
 
@@ -70,11 +67,11 @@ def tagPush(String image_name, String dockerhub_image_tag){
       sh "docker push ${dockerhub_image_tag}"
   }*/
 
-  withCredentials([string(credentialsId: 'DOCKER_HUB_USER', variable: 'DOCKER_HUB_USER'), string(credentialsId: 'DOCKER_HUB_PWD', variable: 'DOCKER_HUB_PWD')]) {
+//  withCredentials([string(credentialsId: 'DOCKER_HUB_USER', variable: 'DOCKER_HUB_USER'), string(credentialsId: 'DOCKER_HUB_PWD', variable: 'DOCKER_HUB_PWD')]) {
       sh "docker tag ${image_name} ${dockerhub_image_tag}"
-      sh 'echo ${DOCKER_HUB_PWD} | docker login -u ${DOCKER_HUB_USER} --password-stdin'
+      //sh 'echo ${DOCKER_HUB_PWD} | docker login -u ${DOCKER_HUB_USER} --password-stdin'
       sh "docker push ${dockerhub_image_tag}"
-  }
+//  }
 }
 
 // Deploy to container to Staging
