@@ -5,8 +5,7 @@ def checkoutCode(String repo, branch) {
 }
 // Gitub scanning for secrets in Repository
 def scan_secrets(String repo) {
-  sh "echo \"PASSWORD='JE SUIS UN MOT DE PASSE'\""
-  sh "docker run --rm -it -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --org=trufflesecurity --repo ${repo}"
+  sh "docker run --rm -t -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --org=trufflesecurity --repo ${repo}"
 }
 
 // Git Repositorey Scanning using Trivy
