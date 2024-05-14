@@ -1,6 +1,7 @@
 // Checkout the Repository
-def checkoutCode(String repo, projectName) {
-    sh "git clone ${repo} ${projectName} && cd ${projectName}"
+def checkoutCode(String repo, branch) {
+    //sh "git clone ${repo} ${projectName} && cd ${projectName}"
+    git branch: ${main}, url: ${repo}
 }
 
 // Git Repositorey Scanning using Trivy
@@ -26,7 +27,6 @@ def installDeps(String fromDir) {
   sh 'pwd'
   sh "cd ${fromDir} && npm install"
 }
-
 
 
 // OWASP Dependency-Check Vulnerabilities
@@ -63,12 +63,15 @@ def tagPush(String image_name, String dockerhub_image_tag){
 }
 
 // Deploy to container to Staging
-def deployBuild(String projectName, String image_name) {
+def deployBuild(String projectName, String service) {
   String projectname = projectName.toLowerCase()
-  sh "cd ${projectName} &&  docker rm -f ${image_name} && docker compose -p ${projectname} up ${image_name} -d"
+  sh "cd ${projectName} &&  docker rm -f ${image_name} && docker compose -p ${projectname} up ${service} -d"
 }
 
-
+// DAST - Dynamic Application Security Testing
+def testDeploy(String targetURL) {
+  sh "docker run -t ghcr.io/zaproxy/zaproxy zap-baseline.py -t ${targetURL}"
+}
 
 
 
