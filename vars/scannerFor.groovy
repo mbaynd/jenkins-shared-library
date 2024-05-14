@@ -3,6 +3,10 @@ def checkoutCode(String repo, branch) {
     //sh "git clone ${repo} ${projectName} && cd ${projectName}"
     git branch: ${main}, url: ${repo}
 }
+// Gitub scanning for secrets in Repository
+def scan_secrets(String repo) {
+  sh "docker run --rm -it -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --org=trufflesecurity --repo ${repo}"
+}
 
 // Git Repositorey Scanning using Trivy
 def repo(String repo) {
