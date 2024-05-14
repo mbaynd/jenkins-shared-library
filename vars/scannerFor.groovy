@@ -2,9 +2,7 @@
 def checkoutCode(String repo, branch) {
     //sh "git clone ${repo} ${projectName} && cd ${projectName}"
     git branch: ${main}, url: ${repo}
-    withCredentials([string(credentialsId: 'DOCKER_HUB_USER', variable: 'DOCKER_HUB_USER'), string(credentialsId: 'DOCKER_HUB_PWD', variable: 'DOCKER_HUB_PWD')]) {    
-      sh 'echo ${DOCKER_HUB_PWD} --------> ${DOCKER_HUB_USER} '
-    }
+    
 }
 // Gitub scanning for secrets in Repository
 def scan_secrets(String repo) {
@@ -88,8 +86,7 @@ def deployBuild(String projectName, String service) {
 
 // DAST - Dynamic Application Security Testing
 def scanDeployment(String targetURL) {
-  sh "docker run -t ghcr.io/zaproxy/zaproxy zap-baseline.py -t ${targetURL}"
-  sh "exit 0"
+  sh "docker run -t ghcr.io/zaproxy/zaproxy zap-baseline.py -t ${targetURL} ; exit 0"
 }
 
 
