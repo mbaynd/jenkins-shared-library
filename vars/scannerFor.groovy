@@ -63,10 +63,10 @@ def dockerHubRepoLogin(String dockerhub_username, String dockerhub_token) {
   sh 'echo ${dockerhub_username} | docker login -u ${dockerhub_token} --password-stdin'
 }
 
-def dockerAwsEcrRepoLogin(String aws_image_repo) {
-  sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin ${aws_image_repo}'
-  sh 'docker tag  ${aws_image_repo} 891376085849.dkr.ecr.us-west-2.amazonaws.com/${aws_image_repo}:1.0.2'
-  sh 'docker push 891376085849.dkr.ecr.us-west-2.amazonaws.com/${aws_image_repo}:1.0.2'
+def dockerAwsEcrRepoLogin(String aws_ecr,String aws_image_repo) {
+  sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin ${aws_ecr}'
+  sh 'docker tag  ${aws_image_repo} ${aws_ecr}/${aws_image_repo}:1.0.2'
+  sh 'docker push ${aws_ecr}/${aws_image_repo}:1.0.2'
 }
 
 // Docker Tag Image & Push
