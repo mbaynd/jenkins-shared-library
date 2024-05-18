@@ -64,9 +64,9 @@ def dockerHubRepoLogin(String dockerhub_username, String dockerhub_token) {
 }
 
 def dockerAwsEcrRepoLogin(String aws_ecr,String aws_image_repo, String image_tag) {
-  sh 'echo "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin ${aws_ecr}"'
-  sh 'echo "docker tag  ${aws_image_repo} ${aws_ecr}/${aws_image_repo}:${image_tag}"'
-  sh 'echo "docker push ${aws_ecr}/${aws_image_repo}:${image_tag}"'
+  sh "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin ${aws_ecr}"
+  sh "docker tag  ${aws_image_repo} ${aws_ecr}/${aws_image_repo}:${image_tag}"
+  sh "docker push ${aws_ecr}/${aws_image_repo}:${image_tag}"
 }
 
 // Docker Tag Image & Push
