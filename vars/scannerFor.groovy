@@ -22,9 +22,9 @@ def fs() {
 // Static Code Analysis with SonarQube
 def sast(String projectName) {
 
-  withSonarQubeEnv('sonar') {
-    sh "/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName}"
-  }
+    withSonarQubeEnv('sonar') {
+      sh "/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName}"
+    } 
 }
 
 // Install NPM Dependencies
@@ -58,6 +58,17 @@ def image(String image_name) {
   sh "trivy image --exit-code 0  --severity HIGH,CRITICAL --scanners vuln ${image_name} | tee -a trivyimage.txt"  
 }
 
+
+def dockerHubRepoLogin(String dockerhub_username, String dockerhub_token) {
+  sh 'echo ${dockerhub_username} | docker login -u ${dockerhub_token} --password-stdin'
+}
+
+def dockerAwsEcrRepoLogin(String aws_image_repo) {
+  sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin ${aws_image_repo}'
+  sh 'docker tag  ${aws_image_repo} 891376085849.dkr.ecr.us-west-2.amazonaws.com/${aws_image_repo}:1.0.2'
+  sh 'docker push 891376085849.dkr.ecr.us-west-2.amazonaws.com/${aws_image_repo}:1.0.2'
+}
+
 // Docker Tag Image & Push
 def tagPush(String image_name, String dockerhub_image_tag){
   /*
@@ -71,8 +82,10 @@ def tagPush(String image_name, String dockerhub_image_tag){
       sh "docker tag ${image_name} ${dockerhub_image_tag}"
       //sh 'echo ${DOCKER_HUB_PWD} | docker login -u ${DOCKER_HUB_USER} --password-stdin'
       sh "docker push ${dockerhub_image_tag}"
+      //sh 'docker scan ${dockerhub_image_tag}'
 //  }
 }
+
 
 // Deploy to container to Staging
 def deployBuild(String projectName, String service) {
@@ -84,7 +97,7 @@ def deployBuild(String projectName, String service) {
 // DAST - Dynamic Application Security Testing
 def scanDeployment(String targetURL) {
   //sh 'docker run -t ghcr.io/zaproxy/zaproxy zap-baseline.py -t \"${targetURL}\" -j -a -r stable-full-scan-report.html'
-  sh 'docker run --user root -v $(pwd):/zap/wrk  -t ghcr.io/zaproxy/zaproxy zap-full-scan.py  -t https://app.cashespeces.net -r stable-full-scan-report.html || true'
+  sh 'docker run --rm --user root -v $(pwd):/zap/wrk  -t ghcr.io/zaproxy/zaproxy zap-full-scan.py  -t https://app.cashespeces.net -r stable-full-scan-report.html || true'
   //sh 'docker run --user $(id -u):$(id -g) -v $(pwd):/zap/wrk  -t ghcr.io/zaproxy/zaproxy zap-full-scan.py  -t https://app.cashespeces.net -r stable-full-scan-report.html 2> /dev/null; (($? == 2)) && echo "Done" >&2'
 }
 
