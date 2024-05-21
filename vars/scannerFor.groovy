@@ -63,6 +63,9 @@ def dockerHubRepoLogin(String dockerhub_username, String dockerhub_token) {
 }
 
 def dockerAwsEcrRepoLogin(String aws_ecr,String aws_image_repo, String image_tag) {
+
+  tags_list = sh(script: "aws ecr list-images --repository-name taskmanager-backend | jq '.imageIds[].imageTag'", returnStdout=true)
+  echo tags_list
   sh "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin ${aws_ecr}"
   sh "docker tag  ${aws_image_repo} ${aws_ecr}/${aws_image_repo}:${image_tag}"
   sh "docker push ${aws_ecr}/${aws_image_repo}:${image_tag}"
@@ -96,7 +99,7 @@ def deployBuild(String projectName, String service) {
 // DAST - Dynamic Application Security Testing
 def scanDeployment(String targetURL) {
   //sh 'docker run -t ghcr.io/zaproxy/zaproxy zap-baseline.py -t \"${targetURL}\" -j -a -r stable-full-scan-report.html'
-  sh 'docker run --rm --user root -v $(pwd):/zap/wrk  -t ghcr.io/zaproxy/zaproxy zap-full-scan.py  -t ${targetURL} -r stable-full-scan-report.html || true'
+  sh "docker run --rm --user root -v $(pwd):/zap/wrk  -t ghcr.io/zaproxy/zaproxy zap-full-scan.py  -t ${targetURL} -r stable-full-scan-report.html || true"
   //sh 'docker run --user $(id -u):$(id -g) -v $(pwd):/zap/wrk  -t ghcr.io/zaproxy/zaproxy zap-full-scan.py  -t https://app.cashespeces.net -r stable-full-scan-report.html 2> /dev/null; (($? == 2)) && echo "Done" >&2'
 }
 
