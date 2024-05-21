@@ -23,7 +23,7 @@ def fs() {
 def sast(String projectName) {
 
     withSonarQubeEnv('sonar') {
-      sh "/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName}"
+      sh '/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName}'
     } 
 }
 
