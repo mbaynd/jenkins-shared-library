@@ -4,6 +4,7 @@ def checkoutCode(String repo, branch) {
     git branch: ${main}, url: ${repo}
     
 }
+
 // Gitub scanning for secrets in Repository
 def scan_secrets(String repo) {
   sh "docker run --rm -t -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --org=trufflesecurity --repo ${repo}"
@@ -16,7 +17,7 @@ def repo(String repo) {
 
 // Filesystem Scanner using Trivy
 def fs() {
-  sh "trivy fs --scanners vuln . | tee -a trivyfs.txt"
+  sh "trivy fs --scanners vuln . | tee -a trivyfs.txt"  
 }
 
 // Static Code Analysis with SonarQube
@@ -35,7 +36,7 @@ def installDeps(String fromDir) {
 
 // OWASP Dependency-Check Vulnerabilities
 def owasp() { 
-  dependencyCheck additionalArguments: ''' 
+  dependencyCheck --nvdApiKey ed43c876-8976-4e9c-aa2a-346aafb569ba  additionalArguments: ''' 
       -o './'
       -s './'
       -f 'ALL' 
@@ -65,7 +66,7 @@ def dockerHubRepoLogin(String dockerhub_username, String dockerhub_token) {
 def dockerAwsEcrRepoLogin(String aws_ecr,String aws_image_repo, String image_tag) {
 
   //tags_list = sh(script: "aws ecr list-images --repository-name taskmanager-backend | jq '.imageIds[].imageTag'", returnStdout=true)
-  //echo tags_list
+  //echo tags_list  
   sh "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin ${aws_ecr}"
   sh "docker tag  ${aws_image_repo} ${aws_ecr}/${aws_image_repo}:${image_tag}"
   sh "docker push ${aws_ecr}/${aws_image_repo}:${image_tag}"
