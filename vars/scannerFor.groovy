@@ -36,7 +36,6 @@ def installDeps(String fromDir) {
 
 // OWASP Dependency-Check Vulnerabilities
 def owasp() { 
-  sh 'export NVD_API_KEY="ed43c876-8976-4e9c-aa2a-346aafb569ba"'
 
   dependencyCheck additionalArguments: ''' 
       -o './'
