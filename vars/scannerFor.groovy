@@ -65,7 +65,7 @@ def image(String image_name) {
 
 // Docker Image Scanning using Trivy
 def image_bom_output(String image_name) {
-  sh "trivy image  --format spdx-json  --exit-code 0  --severity HIGH,CRITICAL --scanners vuln ${image_name} --output target/trivy_image_sbom.json"  
+  sh "trivy image  --format cyclonedx  --exit-code 0  --severity HIGH,CRITICAL --scanners vuln ${image_name} --output target/trivy_image_sbom.json"  
 }
 
 def dockerHubRepoLogin(String dockerhub_username, String dockerhub_token) {
