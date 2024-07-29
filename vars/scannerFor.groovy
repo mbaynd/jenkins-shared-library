@@ -7,7 +7,10 @@ def checkoutCode(String repo, branch) {
 
 // Gitub scanning for secrets in Repository
 def scan_secrets(String repo) {
-  sh "docker run --rm -t -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --org=trufflesecurity --repo ${repo}"
+  sh "docker run --rm -t -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --org=trufflesecurity   --repo ${repo}"
+  // docker run --rm -t -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest git file://. --since-commit main --branch feature-1 --only-verified --fail
+
+
 }
 
 // Git Repositorey Scanning using Trivy
@@ -60,6 +63,10 @@ def image(String image_name) {
   sh "trivy image --exit-code 0  --severity HIGH,CRITICAL --scanners vuln ${image_name} | tee -a trivyimage.txt"  
 }
 
+// Docker Image Scanning using Trivy
+def image_bom_output(String image_name) {
+  sh "trivy image  --format spdx-json  --exit-code 0  --severity HIGH,CRITICAL --scanners vuln ${image_name} --output target/trivy_image_sbom.json"  
+}
 
 def dockerHubRepoLogin(String dockerhub_username, String dockerhub_token) {
   sh 'echo ${dockerhub_username} | docker login -u ${dockerhub_token} --password-stdin'
