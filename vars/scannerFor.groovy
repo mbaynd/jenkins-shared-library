@@ -10,7 +10,6 @@ def scan_secrets(String repo) {
   sh "docker run --rm -t -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --org=trufflesecurity   --repo ${repo}"
   // docker run --rm -t -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest git file://. --since-commit main --branch feature-1 --only-verified --fail
 
-
 }
 
 // Git Repositorey Scanning using Trivy
@@ -18,10 +17,17 @@ def repo(String repo) {
   sh "trivy repository --exit-code 0 --no-progress --severity HIGH,CRITICAL --scanners vuln ${repo} | tee -a trivyrepo.txt"
 }
 
+
 // Filesystem Scanner using Trivy
 def fs() {
   sh "trivy fs --scanners vuln . | tee -a trivyfs.txt"  
 }
+
+// Filesystem Scanner using Trivy defining scanners scanning for secrets
+def trivy_scan(command, format, scanners, severity, outputfile) {
+  sh "trivy ${command} --format ${format} --severity ${severity} --scanners ${scanners} --output ${outputfile}"  
+}
+
 
 // Static Code Analysis with SonarQube
 def sast(String projectName) {

@@ -1,0 +1,22 @@
+[
+ {
+  "Description": "Discovered a Sidekiq Secret, which could lead to compromised background job processing and application data breaches.",
+  "StartLine": 4,
+  "EndLine": 4,
+  "StartColumn": 12,
+  "EndColumn": 0,
+  "Match": "BUNDLE_ENTERPRISE__CONTRIBSYS__COM=cafebabe:deadbeef",
+  "Secret": "cafebabe:deadbeef",
+  "File": "vars/scannerFor.groovy",
+  "SymlinkFile": "",
+  "Commit": "b6756c1e5b6daac63133aab9e650998234304057",
+  "Entropy": 2.6098502,
+  "Author": "Mbaye NDIAYE",
+  "Email": "mbaynd@gmail.com",
+  "Date": "2024-05-15T11:28:04Z",
+  "Message": "Update scannerFor.groovy with all functions updated 31",
+  "Tags": [],
+  "RuleID": "sidekiq-secret",
+  "Fingerprint": "b6756c1e5b6daac63133aab9e650998234304057:vars/scannerFor.groovy:sidekiq-secret:4"
+ }
+]
