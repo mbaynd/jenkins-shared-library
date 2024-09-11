@@ -87,6 +87,15 @@ def dockerAwsEcrRepoLogin(String aws_ecr,String aws_image_repo, String image_tag
   sh "docker push ${aws_ecr}/${aws_image_repo}:${image_tag}"
 }
 
+def dockerAwsEcrRepoLoginWithProfile(String aws_ecr,String aws_image_repo, String image_tag, String profile, String region) {
+
+  //tags_list = sh(script: "aws ecr list-images --repository-name taskmanager-backend | jq '.imageIds[].imageTag'", returnStdout=true)
+  //echo tags_list  
+  sh "aws ecr get-login-password --region ${region} --profile ${profile} | docker login --username AWS --password-stdin ${aws_ecr}"
+  sh "docker tag  ${aws_image_repo} ${aws_ecr}/${aws_image_repo}:${image_tag}"
+  sh "docker push ${aws_ecr}/${aws_image_repo}:${image_tag}"
+}
+
 // Docker Tag Image & Push
 def tagPush(String image_name, String dockerhub_image_tag){
   /*
