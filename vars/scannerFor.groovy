@@ -92,7 +92,7 @@ def dockerAwsEcrRepoLoginWithProfile(String aws_ecr,String aws_image_repo, Strin
   //tags_list = sh(script: "  ", returnStdout=true)
   //echo tags_list  
   sh "aws ecr get-login-password --region ${region} --profile ${profile} | docker login --username AWS --password-stdin ${aws_ecr}"
-  sh "docker tag  ${aws_image_repo} ${aws_ecr}/${aws_image_repo}:${image_tag}"
+  //sh "docker tag  ${aws_image_repo} ${aws_ecr}/${aws_image_repo}:${image_tag}"
   sh "docker push ${aws_ecr}/${aws_image_repo}:${image_tag}"
 }
 
