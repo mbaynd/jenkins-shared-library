@@ -43,13 +43,14 @@ def installDeps(String fromDir) {
 
 
 // OWASP Dependency-Check Vulnerabilities
+      //--nvdApiKey 'ed43c876-8976-4e9c-aa2a-346aafb569ba' 
 def owasp() { 
 
   dependencyCheck additionalArguments: ''' 
       -o './'
       -s './'
       -f 'ALL' 
-      --nvdApiKey 'ed43c876-8976-4e9c-aa2a-346aafb569ba' 
+      --nvdApiKey 'da0284c2-9e83-4afc-9208-55899deb25b1' 
       --prettyPrint
   ''', odcInstallation: 'DP_Check'
                 
