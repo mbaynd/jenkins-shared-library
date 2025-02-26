@@ -44,13 +44,17 @@ def installDeps(String fromDir) {
 
 // OWASP Dependency-Check Vulnerabilities
       //--nvdApiKey 'ed43c876-8976-4e9c-aa2a-346aafb569ba' 
+
+      //--updateOnly
+      //--nvdApiDelay=5000
+      //--nvdApiKey 'da0284c2-9e83-4afc-9208-55899deb25b1' 
 def owasp() { 
 
   dependencyCheck additionalArguments: ''' 
       -o './'
       -s './'
       -f 'ALL' 
-      --nvdApiKey 'da0284c2-9e83-4afc-9208-55899deb25b1' 
+      --nvdApiEndpoint file:///var/lib/jenkins/DependencyCheck/dependency-check/nvd.json
       --prettyPrint
   ''', odcInstallation: 'DP_Check'
                 
