@@ -50,7 +50,6 @@ def owasp() {
       -s './'
       -f 'ALL' 
       --nvdApiKey 'ed43c876-8976-4e9c-aa2a-346aafb569ba' 
-      --nvdApi cvssv3
       --prettyPrint
   ''', odcInstallation: 'DP_Check'
                 
