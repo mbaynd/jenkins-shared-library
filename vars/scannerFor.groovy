@@ -54,6 +54,7 @@ def owasp() {
       -s './'
       -f 'ALL' 
       --nvdApiEndpoint file:///var/lib/jenkins/DependencyCheck/dependency-check/nvd.json
+      --data /var/lib/jenkins/DependencyCheck/dependency-check/data
       --nvdApiKey 'da0284c2-9e83-4afc-9208-55899deb25b1' 
       --prettyPrint
   ''', odcInstallation: 'DP_Check'
