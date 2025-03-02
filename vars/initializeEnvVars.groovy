@@ -5,9 +5,9 @@ def call(String environ, String project_image, String image_tag) {
     
 
     env.KPAY_APP_ENV_LABEL = environ
+    env.KPAY_APP_IMAGE = project_image
     env.KPAY_APP_PROJECT_NAME = project_image+"-"+environ
     env.KPAY_APP_SERVICE_NAME = project_image+"-"+environ
-    env.KPAY_APP_IMAGE = project_image+"-"+environ
     env.KPAY_APP_HOSTNAME = project_image+"-"+environ
     env.KPAY_APP_REPLICAS = 1 
     env.KPAY_APP_LOKI_BASE_URL = "http://10.0.12.211:3100"
