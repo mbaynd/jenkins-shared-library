@@ -29,9 +29,9 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_APP_AWS_ECR = '688149143527.dkr.ecr.us-east-1.amazonaws.com'
 
         env.KPAY_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
-        env.KPAY_APP_SUBNET = "192.168.201.0/24"
-        env.KPAY_APP_FRONTEND_PORT = "13313"
-        env.KPAY_APP_BACKEND_PORT = "13312"
+        env.KPAY_APP_SUBNET = "192.168.191.0/24"
+        env.KPAY_APP_FRONTEND_PORT = "23313"
+        env.KPAY_APP_BACKEND_PORT = "23312"
     } 
 
     if (environ == "prod") {
