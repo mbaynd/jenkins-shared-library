@@ -48,7 +48,7 @@ def call(String environ, String project_image, String image_tag) {
 
     if (environ == "poc") {
 
-        env.KPAY_APP_ENV_LABEL = ="monit"
+        env.KPAY_APP_ENV_LABEL = "monit"
         env.KPAY_APP_AWS_REGION = "us-west-2"    
         env.KPAY_APP_AWS_ECR = '688149143527.dkr.ecr.us-west-2.amazonaws.com'
 
