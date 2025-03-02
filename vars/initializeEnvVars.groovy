@@ -46,7 +46,7 @@ def call(String environ, String project_image, String image_tag) {
     
     }
 
-    if (environ == "poc") {
+    if (environ == "monit") {
 
 
         env.KPAY_APP_AWS_REGION = "us-west-2"    
