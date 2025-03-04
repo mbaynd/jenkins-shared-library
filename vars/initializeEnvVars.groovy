@@ -21,7 +21,7 @@ def call(String environ, String project_image, String image_tag) {
 
     env.KPAY_APP_NETWORK = project + "-net-" + environ
 
-    env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "/var/lib/jenkins/shared-configs/kpay/swarm-stack/kpay-coud-app" + project + '/docker-compose.orig.yaml'
+    env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "docker-compose.orig.yaml'
 
     if (environ == "uat" || environ == "dev") {
 
