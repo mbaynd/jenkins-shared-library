@@ -5,7 +5,7 @@ def call(String environ, String project_image, String image_tag) {
     
 
     env.KPAY_APP_ENV_LABEL = environ
-    env.KPAY_APP_IMAGE = project_image
+    //env.KPAY_APP_IMAGE = project_image
     env.KPAY_APP_PROJECT_NAME = project+"-"+environ
     env.KPAY_APP_SERVICE_NAME = project+"-"+environ
     env.KPAY_APP_HOSTNAME = project+"-"+environ
@@ -31,6 +31,7 @@ def call(String environ, String project_image, String image_tag) {
         switch (project) {
             
             case ~/.*coud.*/:
+                env.KPAY_APP_IMAGE = "kpay-coud-app"
                 env.KPAY_APP_SUBNET = "192.168.191.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23313"
                 env.KPAY_APP_BACKEND_PORT = "23312"
@@ -38,6 +39,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*cms.*/:
+                env.KPAY_APP_IMAGE = "kpay-cms-bakend"
                 env.KPAY_APP_SUBNET = "192.168.192.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23323"
                 env.KPAY_APP_BACKEND_PORT = "23322"
@@ -45,6 +47,8 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*gateway.*/:
+                
+                env.KPAY_APP_IMAGE = "kpay-gateway-app"
                 env.KPAY_APP_SUBNET = "192.168.193.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23323"
                 env.KPAY_APP_BACKEND_PORT = "23322"
@@ -68,10 +72,7 @@ def call(String environ, String project_image, String image_tag) {
             default:
                 println "No matching substring found."
         }
-
-
-
-        
+    
     } 
 
     if (environ == "prod") {
