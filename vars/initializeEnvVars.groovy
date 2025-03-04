@@ -56,12 +56,17 @@ def call(String environ, String project_image, String image_tag) {
 
                 env.KPAY_APP_IMAGE = "kpay-gateway-app" 
                 env.KPAY_APP_SCHED_IMAGE ="kpay-gateway-app-sched"
+
                 env.KPAY_APP_SUBNET = "192.168.193.0/24"
                 env.KPAY_APP_HAS_AUDIO = false // default: false
                 env.KPAY_APP_ISSCHEDULER = false // default: false
                 env.KPAY_APP_SMSPROVIDER = "ORANGE" // default: ORANGE (EXPRESSO)
+
                 env.KPAY_APP_FRONTEND_PORT = "8393"
+                env.KPAY_APP_SCHED_FRONTEND_PORT = "18393"
+
                 env.KPAY_APP_BACKEND_PORT = "8392"
+                env.KPAY_APP_SCHED_BACKEND_PORT = "18392"
                 env.KPAY_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
                 break
 
