@@ -29,18 +29,42 @@ def call(String environ, String project_image, String image_tag) {
 
 
         switch (project) {
-            case { project.contains("coud") }:
+            
+            case ~/.*coud.*/:
                 env.KPAY_APP_SUBNET = "192.168.191.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23313"
                 env.KPAY_APP_BACKEND_PORT = "23312"
                 env.KPAY_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
                 break
-            case { project.contains("cms") }:
-                env.KPAY_APP_SUBNET = "192.168.191.0/24"
-                env.KPAY_APP_FRONTEND_PORT = "23313"
-                env.KPAY_APP_BACKEND_PORT = "23312"
+
+            case ~/.*cms.*/:
+                env.KPAY_APP_SUBNET = "192.168.192.0/24"
+                env.KPAY_APP_FRONTEND_PORT = "23323"
+                env.KPAY_APP_BACKEND_PORT = "23322"
                 env.KPAY_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
                 break
+
+            case ~/.*gateway.*/:
+                env.KPAY_APP_SUBNET = "192.168.193.0/24"
+                env.KPAY_APP_FRONTEND_PORT = "23323"
+                env.KPAY_APP_BACKEND_PORT = "23322"
+                env.KPAY_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
+                break
+
+            case ~/.*biz.*/:
+                env.KPAY_APP_SUBNET = "192.168.194.0/24"
+                env.KPAY_APP_FRONTEND_PORT = "23343"
+                env.KPAY_APP_BACKEND_PORT = "23342"
+                env.KPAY_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
+                break
+
+            case ~/.*api.*/:
+                env.KPAY_APP_SUBNET = "192.168.195.0/24"
+                env.KPAY_APP_FRONTEND_PORT = "23353"
+                env.KPAY_APP_BACKEND_PORT = "23352"
+                env.KPAY_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
+                break
+
             default:
                 println "No matching substring found."
         }
