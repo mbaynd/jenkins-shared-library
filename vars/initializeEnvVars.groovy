@@ -54,7 +54,8 @@ def call(String environ, String project_image, String image_tag) {
             case ~/.*gateway.*/:
                 env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/gateway/docker-compose.orig.yaml"
 
-                env.KPAY_APP_IMAGE = "kpay-gateway-app"
+                env.KPAY_APP_IMAGE = "kpay-gateway-app" 
+                env.KPAY_APP_SCHED_IMAGE ="kpay-gateway-app-sched"
                 env.KPAY_APP_SUBNET = "192.168.193.0/24"
                 env.KPAY_APP_HAS_AUDIO = false // default: false
                 env.KPAY_APP_ISSCHEDULER = false // default: false
