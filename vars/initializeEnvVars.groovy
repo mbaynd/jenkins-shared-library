@@ -22,6 +22,8 @@ def call(String environ, String project_image, String image_tag) {
     env.KPAY_APP_NETWORK = project + "-net-" + environ
 
     env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "docker-compose.orig.yaml"
+    env.KPAY_COMPOSE_FILE  = "docker-compose-"+project+"-"+environ+".yaml"
+
 
     if (environ == "uat" || environ == "dev") {
 
