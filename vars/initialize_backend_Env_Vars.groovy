@@ -1,6 +1,6 @@
 def call(String environ, String project_image, String image_tag) {
 
-    env.KPAY_APP_PROJECT_NAME = "stack-kpay-backend"+environ
+    env.KPAY_APP_PROJECT_NAME = "stack-kpay-backend-"+environ
 
     environ = environ.toLowerCase()
     project = project_image.toLowerCase()
@@ -36,15 +36,15 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_REST_APP_IMAGE = "kpay-rest"
         env.KPAY_REST_SCHEDULER_APP_IMAGE = "smartpay-rest"
         env.KPAY_REST_APP_SUBNET = "192.168.191.0/24"
-        env.KPAY_REST_APP_PORT = "18780"
+        env.KPAY_REST_APP_PORT = "28780"
 
         env.KPAY_WEB_APP_IMAGE = "kpay-web"
         env.KPAY_WEB_APP_SUBNET = "192.168.191.0/24"
-        env.KPAY_WEB_APP_PORT = "18780"
+        env.KPAY_WEB_APP_PORT = "28780"
 
         env.KPAY_MIG_APP_IMAGE = "migration-app"
         env.KPAY_MIG_APP_SUBNET = "192.168.191.0/24"
-        env.KPAY_MIG_APP_PORT = "19780"
+        env.KPAY_MIG_APP_PORT = "29780"
 
         //env.KPAY_REST_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
     
