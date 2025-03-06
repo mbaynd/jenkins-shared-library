@@ -41,7 +41,7 @@ def call(String environ, String project_image, String image_tag) {
 
         env.KPAY_MIG_APP_IMAGE = "migration-app"
         env.KPAY_MIG_APP_SUBNET = "192.168.191.0/24"
-        env.KPAY_MIG_APP_PORT = "18780"
+        env.KPAY_MIG_APP_PORT = "19780"
 
         //env.KPAY_REST_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
     
