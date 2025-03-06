@@ -40,7 +40,7 @@ def call(String environ, String project_image, String image_tag) {
 
         env.KPAY_WEB_APP_IMAGE = "kpay-web"
         env.KPAY_WEB_APP_SUBNET = "192.168.191.0/24"
-        env.KPAY_WEB_APP_PORT = "28780"
+        env.KPAY_WEB_APP_PORT = "28781"
 
         env.KPAY_MIG_APP_IMAGE = "migration-app"
         env.KPAY_MIG_APP_SUBNET = "192.168.191.0/24"
