@@ -1,5 +1,7 @@
 def call(String environ, String project_image, String image_tag) {
 
+    env.KPAY_APP_PROJECT_NAME = "stack-kpay-backend"+environ
+
     environ = environ.toLowerCase()
     project = project_image.toLowerCase()
     
@@ -10,7 +12,7 @@ def call(String environ, String project_image, String image_tag) {
     env.KPAY_WEB_APP_SERVICE_NAME = "smartpay-web-"+environ
     env.KPAY_MIG_APP_SERVICE_NAME = "smartpay-mig-"+environ
 
-    env.KPAY_APP_PROJECT_NAME = project+"-"+environ
+    
 
     env.KPAY_APP_NETWORK = "smartpay-net-" + environ
 
