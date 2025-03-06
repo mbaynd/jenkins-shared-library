@@ -5,7 +5,6 @@ def call(String environ, String project_image, String image_tag) {
     
 
     env.KPAY_APP_ENV_LABEL = environ
-    //env.KPAY_APP_IMAGE = project_image
     
     env.KPAY_APP_SERVICE_NAME = project+"-"+environ
     env.KPAY_APP_PROJECT_NAME = project+"-"+environ
@@ -100,6 +99,7 @@ def call(String environ, String project_image, String image_tag) {
         switch (project) {
             
             case ~/.*coud.*/:
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/coud/docker-compose.orig.yaml"
                 env.KPAY_APP_IMAGE = "kpay-coud-app"
                 env.KPAY_APP_SUBNET = "192.168.191.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23313"
@@ -108,6 +108,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*cms.*/:
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/cms/docker-compose.orig.yaml"
                 env.KPAY_APP_IMAGE = "kpay-cms-bakend"
                 env.KPAY_APP_SUBNET = "192.168.192.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23323"
@@ -116,7 +117,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*gateway.*/:
-
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/gateway/docker-compose.orig.yaml"
                 env.KPAY_APP_IMAGE = "kpay-gateway-app"
                 env.KPAY_APP_SUBNET = "192.168.193.0/24"
                 env.KPAY_APP_HAS_AUDIO = false // default: false
@@ -128,6 +129,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*biz.*/:
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/biz/docker-compose.orig.yaml"
                 env.KPAY_APP_SUBNET = "192.168.194.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23343"
                 env.KPAY_APP_BACKEND_PORT = "23342"
@@ -135,6 +137,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*api.*/:
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/api/docker-compose.orig.yaml"
                 env.KPAY_APP_SUBNET = "192.168.195.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23353"
                 env.KPAY_APP_BACKEND_PORT = "23352"
@@ -142,7 +145,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             default:
-                println "No matching substring found."
+                println "No matching app found."
         }
     
     }
@@ -156,6 +159,7 @@ def call(String environ, String project_image, String image_tag) {
         switch (project) {
             
             case ~/.*coud.*/:
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/coud/docker-compose.orig.yaml"
                 env.KPAY_APP_IMAGE = "kpay-coud-app"
                 env.KPAY_APP_SUBNET = "192.168.191.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23313"
@@ -172,7 +176,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*gateway.*/:
-
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/gateway/docker-compose.orig.yaml"
                 env.KPAY_APP_IMAGE = "kpay-gateway-app"
                 env.KPAY_APP_SUBNET = "192.168.193.0/24"
                 env.KPAY_APP_HAS_AUDIO = false // default: false
@@ -184,6 +188,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*biz.*/:
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/biz/docker-compose.orig.yaml"
                 env.KPAY_APP_SUBNET = "192.168.194.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23343"
                 env.KPAY_APP_BACKEND_PORT = "23342"
