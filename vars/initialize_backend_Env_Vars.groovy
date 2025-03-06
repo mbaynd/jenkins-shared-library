@@ -67,7 +67,6 @@ def call(String environ, String project_image, String image_tag) {
 
      
         //env.KPAY_REST_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
-        }
     
     }
 
@@ -90,8 +89,6 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_WEB_APP_IMAGE = "smartpay-migration"
         env.KPAY_WEB_APP_SUBNET = "192.168.193.0/24"
         env.KPAY_WEB_APP_PORT = "19081"
-
-
 
                 
         env.KPAY_REST_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
