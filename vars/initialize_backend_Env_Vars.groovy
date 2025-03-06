@@ -32,7 +32,7 @@ def call(String environ, String project_image, String image_tag) {
     if (environ == "uat" || environ == "dev") {
 
         environ = "uat"
-        env.KPAY_APP_ENV_LABEL = environ
+        env.KPAY_APP_ENV_LABEL = "monit"
         env.KPAY_AWS_REGION = "us-east-1"
         env.KPAY_AWS_ECR = '688149143527.dkr.ecr.us-east-1.amazonaws.com'
 
@@ -41,7 +41,7 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_REST_APP_PORT = "8780"
 
         env.KPAY_REST_SCHED_APP_IMAGE = "kpay-rest-scheduler"
-        env.KPAY_REST_SCHED_APP_PORT = "8790"
+        env.KPAY_REST_SCHED_APP_PORT = "21790"
 
         env.KPAY_WEB_APP_IMAGE = "kpay-web"
         env.KPAY_WEB_APP_PORT = "8781"
