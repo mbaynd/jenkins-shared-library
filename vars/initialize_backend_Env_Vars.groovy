@@ -8,10 +8,10 @@ def call(String environ, String project_image, String image_tag) {
 
     env.KPAY_APP_ENV_LABEL = environ
     
-    env.KPAY_REST_APP_SERVICE_NAME = "smartpay-rest-"+environ
-    env.KPAY_REST_SCHED_APP_SERVICE_NAME = "smartpay-rest-"+environ
-    env.KPAY_WEB_APP_SERVICE_NAME = "smartpay-web-"+environ
-    env.KPAY_MIG_APP_SERVICE_NAME = "smartpay-mig-"+environ
+    env.KPAY_REST_APP_SERVICE_NAME = "smartpay-rest"
+    env.KPAY_REST_SCHED_APP_SERVICE_NAME = "smartpay-rest"
+    env.KPAY_WEB_APP_SERVICE_NAME = "smartpay-web"
+    env.KPAY_MIG_APP_SERVICE_NAME = "smartpay-mig"
 
     env.KPAY_APP_NETWORK = "smartpay-net-" + environ
     env.KPAY_SCHED_APP_NETWORK = "smartpay-net-rest-sched" + environ
@@ -32,7 +32,7 @@ def call(String environ, String project_image, String image_tag) {
     if (environ == "uat" || environ == "dev") {
 
         environ = "uat"
-        env.KPAY_APP_ENV_LABEL = "monit"
+        env.KPAY_APP_ENV_LABEL = environ
         env.KPAY_AWS_REGION = "us-east-1"
         env.KPAY_AWS_ECR = '688149143527.dkr.ecr.us-east-1.amazonaws.com'
 
