@@ -2,13 +2,11 @@
 def checkoutCode(String repo, branch) {
     //sh "git clone ${repo} ${projectName} && cd ${projectName}"
     git branch: ${main}, url: ${repo}
-    
 }
 
 // Gitub scanning for secrets in Repository
 def scan_secrets(String repo) {
   sh "docker run --rm -t -v \"$PWD:/pwd\" trufflesecurity/trufflehog:latest github --org=trufflesecurity   --repo ${repo}"
-  
 }
 
 // Git Repositorey Scanning using Trivy
@@ -27,8 +25,7 @@ def trivy_scan(command, format, scanners, severity, outputfile) {
   sh "trivy ${command} --format ${format} --severity ${severity} --scanners ${scanners} --output ${outputfile} ."  
 }
 
-
-// Static Code Analysis with SonarQube
+// Static Code Analysis with SonarQube solution
 def sast(String projectName) {
     withSonarQubeEnv("sonar") {
       sh "'/opt/sonar-scanner/bin/sonar-scanner' -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName}"
