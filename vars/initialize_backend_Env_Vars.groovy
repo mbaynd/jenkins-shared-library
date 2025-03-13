@@ -23,10 +23,10 @@ def call(String environ, String project_image, String image_tag) {
     env.KPAY_ANSIBLE_INVENTORY = "/var/lib/jenkins/ansible_inventories/kpay.ini"
     env.KPAY_ANSIBLE_PLAYBOOK = "/var/lib/jenkins/ansible_inventories/deploy.yaml"
 
-    env.KPAY_BACKEND_DOCKER_COMPOSE_TEMPLATE =  "kpay/backend/docker-compose.orig.yaml"
+    env.KPAY_BACKEND_DOCKER_COMPOSE_TEMPLATE =  "kpay/backend/deployments/docker-compose.orig.yaml"
     env.KPAY_BACKEND_DOCKER_COMPOSE =  "docker-compose-"+project+"-"+environ+".yaml"
 
-    env.KPAY_BACKEND_SCHED_DOCKER_COMPOSE_TEMPLATE =  "kpay/backend/docker-compose-sched.orig.yaml"
+    env.KPAY_BACKEND_SCHED_DOCKER_COMPOSE_TEMPLATE =  "kpay/backend/deployments/docker-compose-sched.orig.yaml"
     env.KPAY_BACKEND_SCHED_DOCKER_COMPOSE =  "docker-compose-sched"+project+"-"+environ+".yaml"
 
     if (environ == "uat" || environ == "dev") {
@@ -67,7 +67,6 @@ def call(String environ, String project_image, String image_tag) {
 
         env.KPAY_WEB_APP_IMAGE = "smartpay-migration"
         env.KPAY_WEB_APP_PORT = "19081"
-    
     }
 
     if (environ == "poc") {
