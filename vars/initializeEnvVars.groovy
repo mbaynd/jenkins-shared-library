@@ -24,15 +24,14 @@ def call(String environ, String project_image, String image_tag) {
     if (environ == "uat" || environ == "dev") {
 
         environ = "uat"
-      
-        env.KPAY_AWS_REGION = "us-east-1"
-        env.KPAY_AWS_ECR = '688149143527.dkr.ecr.us-east-1.amazonaws.com'
+        env.KPAY_APP_AWS_REGION = "us-east-1"
+        env.KPAY_APP_AWS_ECR = '688149143527.dkr.ecr.us-east-1.amazonaws.com'
 
 
         switch (project) {
             
             case ~/.*coud.*/:
-                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/coud/docker-compose.orig.yaml"
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/coud/deployments/docker-compose.orig.yaml"
 
                 env.KPAY_APP_IMAGE = "kpay-coud-app"
                 env.KPAY_APP_SUBNET = "192.168.191.0/24"
@@ -42,7 +41,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*cms.*/:
-                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/cms/docker-compose.orig.yaml"
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/cms/deployments/docker-compose.orig.yaml"
 
                 env.KPAY_APP_IMAGE = "kpay-cms-bakend"
                 env.KPAY_APP_SUBNET = "192.168.192.0/24"
@@ -52,7 +51,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*gateway.*/:
-                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/gateway/docker-compose.orig.yaml"
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/gateway/deployments/docker-compose.orig.yaml"
 
                 env.KPAY_APP_IMAGE = "kpay-gateway-app" 
                 env.KPAY_APP_SCHED_IMAGE ="kpay-gateway-app-sched"
@@ -71,7 +70,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*biz.*/:
-                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/biz/docker-compose.orig.yaml"
+                env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/biz/deployments/docker-compose.orig.yaml"
 
                 env.KPAY_APP_SUBNET = "192.168.194.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23343"
@@ -94,8 +93,8 @@ def call(String environ, String project_image, String image_tag) {
 
     if (environ == "prod") {
         
-        env.KPAY_AWS_REGION = "eu-west-1"
-        env.KPAY_AWS_ECR = '688149143527.dkr.ecr.eu-west-1.amazonaws.com'
+        env.KPAY_APP_AWS_REGION = "eu-west-1"
+        env.KPAY_APP_AWS_ECR = '688149143527.dkr.ecr.eu-west-1.amazonaws.com'
 
         switch (project) {
             
@@ -154,8 +153,8 @@ def call(String environ, String project_image, String image_tag) {
     if (environ == "poc") {
 
         env.KPAY_APP_ENV_LABEL = "monit"
-        env.KPAY_AWS_REGION = "us-west-2"    
-        env.KPAY_AWS_ECR = '688149143527.dkr.ecr.us-west-2.amazonaws.com'
+        env.KPAY_APP_AWS_REGION = "us-west-2"    
+        env.KPAY_APP_AWS_ECR = '688149143527.dkr.ecr.us-west-2.amazonaws.com'
 
         switch (project) {
             
