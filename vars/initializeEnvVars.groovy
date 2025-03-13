@@ -24,8 +24,9 @@ def call(String environ, String project_image, String image_tag) {
     if (environ == "uat" || environ == "dev") {
 
         environ = "uat"
-        env.KPAY_APP_AWS_REGION = "us-east-1"
-        env.KPAY_APP_AWS_ECR = '688149143527.dkr.ecr.us-east-1.amazonaws.com'
+      
+        env.KPAY_AWS_REGION = "us-east-1"
+        env.KPAY_AWS_ECR = '688149143527.dkr.ecr.us-east-1.amazonaws.com'
 
 
         switch (project) {
@@ -93,8 +94,8 @@ def call(String environ, String project_image, String image_tag) {
 
     if (environ == "prod") {
         
-        env.KPAY_APP_AWS_REGION = "eu-west-1"
-        env.KPAY_APP_AWS_ECR = '688149143527.dkr.ecr.eu-west-1.amazonaws.com'
+        env.KPAY_AWS_REGION = "eu-west-1"
+        env.KPAY_AWS_ECR = '688149143527.dkr.ecr.eu-west-1.amazonaws.com'
 
         switch (project) {
             
@@ -153,8 +154,8 @@ def call(String environ, String project_image, String image_tag) {
     if (environ == "poc") {
 
         env.KPAY_APP_ENV_LABEL = "monit"
-        env.KPAY_APP_AWS_REGION = "us-west-2"    
-        env.KPAY_APP_AWS_ECR = '688149143527.dkr.ecr.us-west-2.amazonaws.com'
+        env.KPAY_AWS_REGION = "us-west-2"    
+        env.KPAY_AWS_ECR = '688149143527.dkr.ecr.us-west-2.amazonaws.com'
 
         switch (project) {
             
