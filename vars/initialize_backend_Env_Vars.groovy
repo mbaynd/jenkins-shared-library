@@ -66,7 +66,7 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_REST_APP_IMAGE = "smartpay-web"
         env.KPAY_REST_APP_PORT = "8081"
 
-        env.KPAY_WEB_APP_IMAGE = "smartpay-migration"
+        env.KPAY_WEB_APP_IMAGE = "smartpay-web"
         env.KPAY_WEB_APP_PORT = "19081"
 
         env.KPAY_DASHBOARD_APP_IMAGE  = "smartpay-dashboard"
@@ -89,7 +89,7 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_REST_APP_IMAGE = "kpay-backend/smartpay-web"
         env.KPAY_REST_APP_PORT = "18780"
 
-        env.KPAY_WEB_APP_IMAGE = "smartpay-migration"
+        env.KPAY_WEB_APP_IMAGE = "smartpay-web"
         env.KPAY_WEB_APP_PORT = "19081"
 
         env.KPAY_DASHBOARD_APP_IMAGE  = "smartpay-dashboard"
