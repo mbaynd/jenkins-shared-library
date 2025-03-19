@@ -13,6 +13,7 @@ def call(String environ, String project_image, String image_tag) {
     env.KPAY_WEB_APP_SERVICE_NAME = "smartpay-web"
     env.KPAY_MIG_APP_SERVICE_NAME = "smartpay-mig"
 
+
     env.KPAY_APP_NETWORK = "smartpay-net-" + environ
     env.KPAY_SCHED_APP_NETWORK = "smartpay-net-rest-sched" + environ
 
@@ -36,7 +37,6 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_AWS_REGION = "us-east-1"
         env.KPAY_AWS_ECR = '688149143527.dkr.ecr.us-east-1.amazonaws.com'
 
-        
         env.KPAY_REST_APP_IMAGE = "kpay-rest"
         env.KPAY_REST_APP_PORT = "8780"
 
@@ -49,6 +49,7 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_MIG_APP_IMAGE = "migration-app"
         env.KPAY_MIG_APP_PORT = "9781"
     
+        env.KPAY_DASHBOARD_APP_IMAGE  = "kpay-dashboard"
     } 
 
     if (environ == "prod") {
@@ -67,6 +68,8 @@ def call(String environ, String project_image, String image_tag) {
 
         env.KPAY_WEB_APP_IMAGE = "smartpay-migration"
         env.KPAY_WEB_APP_PORT = "19081"
+
+        env.KPAY_DASHBOARD_APP_IMAGE  = "smartpay-dashboard"
     }
 
     if (environ == "poc") {
@@ -89,6 +92,7 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_WEB_APP_IMAGE = "smartpay-migration"
         env.KPAY_WEB_APP_PORT = "19081"
 
+        env.KPAY_DASHBOARD_APP_IMAGE  = "smartpay-dashboard"
                 
         //env.KPAY_REST_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
     }
