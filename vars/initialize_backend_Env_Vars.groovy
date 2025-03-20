@@ -12,8 +12,10 @@ def call(String environ, String project_image, String image_tag) {
     env.KPAY_REST_SCHED_APP_SERVICE_NAME = "smartpay-rest"
     env.KPAY_WEB_APP_SERVICE_NAME = "smartpay-web"
     env.KPAY_MIG_APP_SERVICE_NAME = "smartpay-mig"
+    env.KPAY_DASHBOARD_APP_SERVICE_NAME = "smartpay-dashboard"
 
 
+    env.KPAY_DASHBOARD_APP_NETWORK = "kpay-dashboard-" + environ
     env.KPAY_APP_NETWORK = "smartpay-net-" + environ
     env.KPAY_SCHED_APP_NETWORK = "smartpay-net-rest-sched" + environ
 
@@ -24,11 +26,14 @@ def call(String environ, String project_image, String image_tag) {
     env.KPAY_ANSIBLE_INVENTORY = "/var/lib/jenkins/ansible_inventories/kpay.ini"
     env.KPAY_ANSIBLE_PLAYBOOK = "/var/lib/jenkins/ansible_inventories/deploy.yaml"
 
-    env.KPAY_BACKEND_DOCKER_COMPOSE_TEMPLATE =  "kpay/backend/deployments/docker-compose.orig.yaml"
+    env.KPAY_BACKEND_DOCKER_COMPOSE_TEMPLATE =  "kpay/backend/deployments/web_rest/docker-compose.orig.yaml"
     env.KPAY_BACKEND_DOCKER_COMPOSE =  "docker-compose-"+project+"-"+environ+".yaml"
 
-    env.KPAY_BACKEND_SCHED_DOCKER_COMPOSE_TEMPLATE =  "kpay/backend/deployments/docker-compose-sched.orig.yaml"
+    env.KPAY_BACKEND_SCHED_DOCKER_COMPOSE_TEMPLATE =  "kpay/backend/deployments/web_rest/docker-compose-sched.orig.yaml"
     env.KPAY_BACKEND_SCHED_DOCKER_COMPOSE =  "docker-compose-sched"+project+"-"+environ+".yaml"
+
+    env.KPAY_BACKEND_DASHBOARD_DOCKER_COMPOSE_TEMPLATE =  "kpay/backend/deployments/dashboard/docker-compose.orig.yaml"
+    env.KPAY_BACKEND_DASHBOARD_DOCKER_COMPOSE =  "docker-compose-dashboard"+project+"-"+environ+".yaml"
 
     if (environ == "uat" || environ == "dev") {
 
@@ -50,6 +55,7 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_MIG_APP_PORT = "9781"
     
         env.KPAY_DASHBOARD_APP_IMAGE  = "kpay-dashboard"
+        env.KPAY_DASHBOARD_APP_PORT = "9790"
     } 
 
     if (environ == "prod") {
@@ -70,6 +76,7 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_WEB_APP_PORT = "19081"
 
         env.KPAY_DASHBOARD_APP_IMAGE  = "smartpay-dashboard"
+        env.KPAY_DASHBOARD_APP_PORT = "9090"
     }
 
     if (environ == "poc") {
@@ -93,6 +100,7 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_WEB_APP_PORT = "19081"
 
         env.KPAY_DASHBOARD_APP_IMAGE  = "smartpay-dashboard"
+        env.KPAY_DASHBOARD_APP_PORT = "9890"
                 
         //env.KPAY_REST_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
     }
