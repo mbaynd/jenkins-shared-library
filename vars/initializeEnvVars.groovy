@@ -35,8 +35,8 @@ def call(String environ, String project_image, String image_tag) {
 
                 env.KPAY_APP_IMAGE = "kpay-coud-app"
                 env.KPAY_APP_SUBNET = "192.168.191.0/24"
-                env.KPAY_APP_FRONTEND_PORT = "23313"
-                env.KPAY_APP_BACKEND_PORT = "23312"
+                env.KPAY_APP_FRONTEND_PORT = "3313"
+                env.KPAY_APP_BACKEND_PORT = "3312"
                 env.KPAY_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
                 break
 
@@ -45,8 +45,8 @@ def call(String environ, String project_image, String image_tag) {
 
                 env.KPAY_APP_IMAGE = "kpay-cms-bakend"
                 env.KPAY_APP_SUBNET = "192.168.192.0/24"
-                env.KPAY_APP_FRONTEND_PORT = "23323"
-                env.KPAY_APP_BACKEND_PORT = "23322"
+                env.KPAY_APP_FRONTEND_PORT = "3303"
+                env.KPAY_APP_BACKEND_PORT = "3302"
                 env.KPAY_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
                 break
 
@@ -102,8 +102,8 @@ def call(String environ, String project_image, String image_tag) {
                 env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/coud/deployments/docker-compose.orig.yaml"
                 env.KPAY_APP_IMAGE = "kpay-coud-app"
                 env.KPAY_APP_SUBNET = "192.168.191.0/24"
-                env.KPAY_APP_FRONTEND_PORT = "23313"
-                env.KPAY_APP_BACKEND_PORT = "23312"
+                env.KPAY_APP_FRONTEND_PORT = "3413"
+                env.KPAY_APP_BACKEND_PORT = "3412"
                 env.KPAY_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
                 break
 
@@ -111,8 +111,8 @@ def call(String environ, String project_image, String image_tag) {
                 env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/cms/deployments/docker-compose.orig.yaml"
                 env.KPAY_APP_IMAGE = "kpay-cms-bakend"
                 env.KPAY_APP_SUBNET = "192.168.192.0/24"
-                env.KPAY_APP_FRONTEND_PORT = "23323"
-                env.KPAY_APP_BACKEND_PORT = "23322"
+                env.KPAY_APP_FRONTEND_PORT = "3403"
+                env.KPAY_APP_BACKEND_PORT = "3402"
                 env.KPAY_APP_HEALTHCHECK_URL = "http://localhost:3000/v1/doc"
                 break
 
