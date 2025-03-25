@@ -30,10 +30,11 @@ def call(Map args = [:]) {
 }
 
 // Function to convert milliseconds to human-readable format
-def formatDuration(long millis) {
-    long seconds = millis / 1000 % 60
-    long minutes = millis / (1000 * 60) % 60
-    long hours = millis / (1000 * 60 * 60)
+def formatDuration(millis) {
+    long duration = millis as long // Ensure millis is a long type
+    long seconds = (duration / 1000) % 60
+    long minutes = (duration / (1000 * 60)) % 60
+    long hours = (duration / (1000 * 60 * 60))
 
     return (hours > 0 ? "${hours}h " : "") +
            (minutes > 0 ? "${minutes}m " : "") +
