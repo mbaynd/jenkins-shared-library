@@ -31,7 +31,7 @@ def call(Map args = [:]) {
 
 // Function to convert milliseconds to human-readable format
 def formatDuration(millis) {
-    long duration = millis as long // Ensure millis is a long type
+    long duration = millis.toLong() // Ensure it is a long before performing any math
     long seconds = (duration / 1000) % 60
     long minutes = (duration / (1000 * 60)) % 60
     long hours = (duration / (1000 * 60 * 60))
