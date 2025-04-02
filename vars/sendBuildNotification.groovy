@@ -18,7 +18,7 @@ def call(Map args = [:]) {
             <p><strong>Project:</strong> ${env.JOB_NAME}</p>
             <p><strong>Start build time:</strong> ${env.START_BUILD_DATETIME}</p>
             <p><strong>End build time:</strong> ${env.END_BUILD_DATETIME}</p>
-            <p><strong>Build Duration:</strong> ${currentBuild.duration}</p>
+            <p><strong>Build Duration:</strong> ${currentBuild.duration} secondes</p>
             <p><strong>Build User Name:</strong> ${env.BUILD_USER}</p>
             <p><strong>Build User Email:</strong> ${env.BUILD_USER_EMAIL}</p>
             <p><strong>Build Number:</strong> ${env.BUILD_NUMBER}</p>
