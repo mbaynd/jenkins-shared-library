@@ -7,7 +7,6 @@ def call(Map args = [:]) {
 
     // Calculate and format duration
     def durationMillis = endTime - startTime
-    def durationReadable = formatDuration(durationMillis)
 
     // Set end build time
     env.END_BUILD_DATETIME = new Date().format("yyyy-MM-dd HH:mm:ss", TimeZone.getTimeZone('UTC'))
