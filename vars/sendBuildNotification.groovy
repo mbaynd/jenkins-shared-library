@@ -8,13 +8,12 @@ def call(Map args = [:]) {
     // Calculate and format duration
     def durationMillis = endTime - startTime
 
-    def environ = ${env.ENV}.toUpperCase()
     // Set end build time
     env.END_BUILD_DATETIME = new Date().format("yyyy-MM-dd HH:mm:ss", TimeZone.getTimeZone('UTC'))
 
     emailext attachLog: true,
         mimeType: 'text/html',
-        subject: "${environ}: ${env.JOB_BASE_NAME} --> ${currentBuild.result}",
+        subject: "${env.ENV}: ${env.JOB_BASE_NAME} --> ${currentBuild.result}",
         body: """<html>
             <center><p style='border: 1px solid blue; padding: 5px; align: center;'><strong>Project: ${env.JOB_NAME}</strong></p></center>
             <p><strong>Start build time:</strong> ${env.START_BUILD_DATETIME}</p>
