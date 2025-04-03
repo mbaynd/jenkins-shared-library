@@ -22,7 +22,6 @@ def call(Map args = [:]) {
             <p><strong>Build Duration:</strong> ${currentBuild.duration} secondes</p>
             <p><strong>Build User Name:</strong> ${env.BUILD_USER}</p>
             <p><strong>Build User Email:</strong> ${env.BUILD_USER_EMAIL}</p>
-            
             <p><strong>URL:</strong> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
         </html>""",
         from: fromEmail,
