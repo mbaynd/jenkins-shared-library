@@ -57,7 +57,7 @@ def owasp() {
       -o './'
       -s './'
       -f 'ALL' 
-      --nvdApiKey "${env.NVD_API_KEY}" 
+      --nvdApiKey "d1511e02-8d93-4613-b3d9-c95e493fc332" 
       --prettyPrint
   ''', odcInstallation: 'DP_Check'
                 
