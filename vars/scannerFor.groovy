@@ -26,10 +26,15 @@ def trivy_scan(command, format, scanners, severity, outputfile) {
 }
 
 // Static Code Analysis with SonarQube solution
-def sast(String projectName) {
-    withSonarQubeEnv("sonar") {
-      sh "'/opt/sonar-scanner/bin/sonar-scanner' -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName}"
-    } 
+def sast(String projectName, String credentialsId) {
+    def sonarScannerHome= tool 'sonar-scanner'
+    withSonarQubeEnv(insatllationName: 'sonarqube', envOnly: true, credentialsId: ${credentialsId}) {
+        sh "${sonarScannerHome}/bin/sonar-scanner -Dsonar.sources=. -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName} -Dsonar.projectVersion=1.0 -Dsonar.analysis.buildNumber=$BUILD_NUMBER"
+    }
+
+    //withSonarQubeEnv("sonar") {
+    //  sh "'/opt/sonar-scanner/bin/sonar-scanner' -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName}"
+    //} 
 }
 
 // Install NPM Dependencies
@@ -44,15 +49,15 @@ def installDeps(String fromDir) {
 
       //--updateOnly
       //--nvdApiDelay=5000
+      //--nvdApiEndpoint file:///var/lib/jenkins/DependencyCheck/dependency-check/nvd.json
+      //--data /var/lib/jenkins/DependencyCheck/dependency-check/data
 def owasp() { 
 
   dependencyCheck additionalArguments: ''' 
       -o './'
       -s './'
       -f 'ALL' 
-      --nvdApiEndpoint file:///var/lib/jenkins/DependencyCheck/dependency-check/nvd.json
-      --data /var/lib/jenkins/DependencyCheck/dependency-check/data
-      --nvdApiKey 'da0284c2-9e83-4afc-9208-55899deb25b1' 
+      --nvdApiKey "${env.NVD_API_KEY}" 
       --prettyPrint
   ''', odcInstallation: 'DP_Check'
                 
