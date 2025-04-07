@@ -28,7 +28,7 @@ def trivy_scan(command, format, scanners, severity, outputfile) {
 // Static Code Analysis with SonarQube solution
 def sast(String projectName, String credentialsId) {
     def sonarScannerHome= tool 'sonar-scanner'
-    withSonarQubeEnv(insatllationName: 'sonarqube', envOnly: true, credentialsId: ${credentialsId}) {
+    withSonarQubeEnv(insatllationName: 'sonarqube', envOnly: true, credentialsId: "${credentialsId}") {
         sh "${sonarScannerHome}/bin/sonar-scanner -Dsonar.sources=. -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName} -Dsonar.projectVersion=1.0 -Dsonar.analysis.buildNumber=$BUILD_NUMBER"
     }
 
