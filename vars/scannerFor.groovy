@@ -29,7 +29,7 @@ def trivy_scan(command, format, scanners, severity, outputfile) {
 def sast(String projectName, String credentialsId) {
     def sonarScannerHome= tool 'sonar-scanner'
     withSonarQubeEnv(insatllationName: 'sonarqube', envOnly: true, credentialsId: "${credentialsId}") {
-        sh "${sonarScannerHome}/bin/sonar-scanner -Dsonar.sources=. -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName} -Dsonar.projectVersion=1.0 -Dsonar.analysis.buildNumber=$BUILD_NUMBER"
+        sh "${sonarScannerHome}/bin/sonar-scanner -Dsonar.sources=. -Dsonar.projectName=${projectName} -Dsonar.projectKey=${projectName} -Dsonar.projectVersion=1.0 -Dsonar.analysis.buildNumber=$BUILD_NUMBER -Dsonar.java.binaries=./target/classes"
     }
 
     //withSonarQubeEnv("sonar") {
