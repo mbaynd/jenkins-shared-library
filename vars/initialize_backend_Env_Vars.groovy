@@ -69,11 +69,8 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_REST_SCHED_APP_IMAGE = "smartpay-rest-scheduler"
         env.KPAY_REST_SCHED_APP_PORT = "8890"
 
-        env.KPAY_REST_APP_IMAGE = "smartpay-web"
-        env.KPAY_REST_APP_PORT = "8081"
-
         env.KPAY_WEB_APP_IMAGE = "smartpay-web"
-        env.KPAY_WEB_APP_PORT = "19081"
+        env.KPAY_WEB_APP_PORT = "8081"
 
         env.KPAY_DASHBOARD_APP_IMAGE  = "smartpay-dashboard"
         env.KPAY_DASHBOARD_APP_PORT = "9090"
@@ -84,17 +81,12 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_APP_ENV_LABEL = "monit"
         env.KPAY_AWS_REGION = "us-west-2"    
         env.KPAY_AWS_ECR = '688149143527.dkr.ecr.us-west-2.amazonaws.com'
-     
 
         env.KPAY_REST_APP_IMAGE = "kpay-backend/smartpay-rest"
         env.KPAY_REST_APP_PORT = "18780"
 
         env.KPAY_REST_SCHED_APP_IMAGE = "smartpay-rest-scheduler"
         env.KPAY_REST_SCHED_APP_PORT = "18890"
-
-
-        env.KPAY_REST_APP_IMAGE = "kpay-backend/smartpay-web"
-        env.KPAY_REST_APP_PORT = "18780"
 
         env.KPAY_WEB_APP_IMAGE = "smartpay-web"
         env.KPAY_WEB_APP_PORT = "19081"
