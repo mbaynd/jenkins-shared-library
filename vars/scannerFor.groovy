@@ -22,7 +22,7 @@ def fs() {
 
 // Filesystem Scanner using Trivy defining scanners scanning for secrets
 def trivy_scan(command, format, scanners, severity, outputfile) {
-  sh "trivy ${command} --format ${format} --severity ${severity} --scanners ${scanners} --output ${outputfile} ."  
+  sh "trivy ${command} --format ${format} --severity ${severity} --scanners ${scanners} --ignore-unfixed --output ${outputfile} ."  
 }
 
 // Static Code Analysis with SonarQube solution

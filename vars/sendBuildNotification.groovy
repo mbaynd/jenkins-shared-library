@@ -1,5 +1,6 @@
 def call(Map args = [:]) {
-    def fromEmail = args.get('from', "QuickPay CI/CD <mbaynd@gmail.com>")
+    //def fromEmail = args.get('from', "QuickPay CI/CD <mbaynd@gmail.com>")
+    def fromEmail = args.get('from', "QuickPay CI/CD <notification@quickpay.sn>")
     def toEmail = args.get('to', "mbaynd@gmail.com;mbaynd@yahoo.fr;mbaye.ndiaye@quickpay.sn")
 
     def startTime = env.START_BUILD_DATETIME ? Date.parse("yyyy-MM-dd HH:mm:ss", env.START_BUILD_DATETIME).getTime() : System.currentTimeMillis()

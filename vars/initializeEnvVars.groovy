@@ -72,6 +72,9 @@ def call(String environ, String project_image, String image_tag) {
             case ~/.*biz.*/:
                 env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/biz/deployments/docker-compose.orig.yaml"
 
+                env.KPAY_APP_FRONTEND_IMAGE = "kpay-biz-frontend"
+                env.KPAY_APP_BACKEND_IMAGE = "kpay-biz-backend" 
+
                 env.KPAY_APP_SUBNET = "192.168.194.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23343"
                 env.KPAY_APP_BACKEND_PORT = "23342"
@@ -79,6 +82,7 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*api.*/:
+
                 env.KPAY_APP_SUBNET = "192.168.195.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23353"
                 env.KPAY_APP_BACKEND_PORT = "23352"
@@ -129,6 +133,10 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*biz.*/:
+
+                env.KPAY_APP_FRONTEND_IMAGE = "kpay-biz-frontend"
+                env.KPAY_APP_BACKEND_IMAGE = "kpay-biz-backend" 
+
                 env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/biz/deployments/docker-compose.orig.yaml"
                 env.KPAY_APP_SUBNET = "192.168.194.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "24343"
@@ -188,6 +196,10 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*biz.*/:
+
+                env.KPAY_APP_FRONTEND_IMAGE = "kpay-biz-frontend"
+                env.KPAY_APP_BACKEND_IMAGE = "kpay-biz-backend" 
+                
                 env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/biz/deployments/docker-compose.orig.yaml"
                 env.KPAY_APP_SUBNET = "192.168.194.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23343"
