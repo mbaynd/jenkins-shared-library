@@ -86,7 +86,7 @@ def image_bom_output(String image_name) {
 // Docker Image Scanning using Trivy to output file
 def image_bom_outputfile(String image_name, String outputfile) {
   sh "if [ ! -d target ]; then mkdir target; fi"
-  sh "trivy image  --format cyclonedx  --exit-code 0  --severity HIGH,CRITICAL --scanners vuln ${image_name} --output ${outputfile}"  
+  sh "trivy image  --format cyclonedx  --exit-code 0  --severity HIGH,CRITICAL --scanners vuln ${image_name} --output target/${outputfile}"  
 }
 
 
