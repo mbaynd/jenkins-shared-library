@@ -51,7 +51,7 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_WEB_APP_IMAGE = "kpay-web"
         env.KPAY_WEB_APP_PORT = "8781"
 
-        env.KPAY_MIG_APP_IMAGE = "migration-app"
+        env.KPAY_MIG_APP_IMAGE = "smartpay-migration"
         env.KPAY_MIG_APP_PORT = "9781"
     
         env.KPAY_DASHBOARD_APP_IMAGE  = "kpay-dashboard"
@@ -72,8 +72,13 @@ def call(String environ, String project_image, String image_tag) {
         env.KPAY_WEB_APP_IMAGE = "smartpay-web"
         env.KPAY_WEB_APP_PORT = "8081"
 
+        env.KPAY_MIG_APP_IMAGE = "smartpay-migration"
+        env.KPAY_MIG_APP_PORT = "9081"
+
         env.KPAY_DASHBOARD_APP_IMAGE  = "smartpay-dashboard"
         env.KPAY_DASHBOARD_APP_PORT = "9090"
+
+
     }
 
     if (environ == "poc") {
@@ -90,6 +95,9 @@ def call(String environ, String project_image, String image_tag) {
 
         env.KPAY_WEB_APP_IMAGE = "smartpay-web"
         env.KPAY_WEB_APP_PORT = "19081"
+
+        env.KPAY_MIG_APP_IMAGE = "smartpay-migration"
+        env.KPAY_MIG_APP_PORT = "19781"
 
         env.KPAY_DASHBOARD_APP_IMAGE  = "smartpay-dashboard"
         env.KPAY_DASHBOARD_APP_PORT = "9890"
