@@ -1,5 +1,15 @@
 def call(String environ, String project_image, String image_tag) {
 
+    // Define custom build Message
+    def shortCommit = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
+    def commitMessage = sh(script: "git log -1 --pretty=%B", returnStdout: true).trim()
+
+    currentBuild.displayName = "${env.ENV} - #${BUILD_NUMBER}"
+    currentBuild.description = "${env.ENV}: [ User: ${env.BUILD_USER} - Commit: ${shortCommit} -  Message: ${commitMessage} ]"
+
+    
+    // Set Environnement variables for building projects
+
     env.KPAY_APP_PROJECT_NAME = "stack-kpay-backend-"+environ
 
     environ = environ.toLowerCase()
