@@ -17,7 +17,7 @@ def call(Map args = [:]) {
         subject: "${env.ENV}: ${env.JOB_BASE_NAME} --> ${currentBuild.result}",
         body: """<html>
             <center><p style='border: 1px solid blue; padding: 5px; align: center;'><strong>Project: ${env.JOB_BASE_NAME}</strong></p></center>
-            <p><strong>Build Number:</strong> ${env.BUILD_NUMBER}</p>
+            <p><strong>Build Number:</strong> ${env.ENV} - #${env.BUILD_NUMBER}</p>
             <p><strong>Start build time:</strong> ${env.START_BUILD_DATETIME}</p>
             <p><strong>End build time:</strong> ${env.END_BUILD_DATETIME}</p>
             <p><strong>Build Duration:</strong> ${currentBuild.duration} secondes</p>
