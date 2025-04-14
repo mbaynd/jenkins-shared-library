@@ -84,6 +84,9 @@ def call(String environ, String project_image, String image_tag) {
 
             case ~/.*biz.*/:
 
+                env.KPAY_APP_FRONTEND_IMAGE = "kpay-biz-frontend"
+                env.KPAY_APP_BACKEND_IMAGE = "kpay-biz-backend" 
+
                 env.KPAY_APP_REPO_URL = "https://github.com/quickpaysn/kpay-biz-cicd"
                 env.KPAY_APP_REPO_BRANCH = "main"
 
