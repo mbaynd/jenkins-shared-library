@@ -50,6 +50,10 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*cms.*/:
+
+                env.KPAY_APP_FRONTEND_IMAGE = "kpay-cms-frontend"
+                env.KPAY_APP_BACKEND_IMAGE = "kpay-cms-backend" 
+                
                 env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/cms/deployments/docker-compose.orig.yaml"
 
                 env.KPAY_APP_IMAGE = "kpay-cms-bakend"
@@ -122,6 +126,10 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*cms.*/:
+
+                env.KPAY_APP_FRONTEND_IMAGE = "kpay-cms-frontend"
+                env.KPAY_APP_BACKEND_IMAGE = "kpay-cms-backend" 
+
                 env.KPAY_APP_DOCKER_COMPOSE_TEMPLATE =  "kpay/cms/deployments/docker-compose.orig.yaml"
                 env.KPAY_APP_IMAGE = "kpay-cms-bakend"
                 env.KPAY_APP_SUBNET = "192.168.192.0/24"
@@ -189,6 +197,10 @@ def call(String environ, String project_image, String image_tag) {
                 break
 
             case ~/.*cms.*/:
+
+                env.KPAY_APP_FRONTEND_IMAGE = "kpay-cms-frontend"
+                env.KPAY_APP_BACKEND_IMAGE = "kpay-cms-backend" 
+
                 env.KPAY_APP_IMAGE = "kpay-cms-bakend"
                 env.KPAY_APP_SUBNET = "192.168.192.0/24"
                 env.KPAY_APP_FRONTEND_PORT = "23323"
