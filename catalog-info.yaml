@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: jenkins-shared-libraries
+  description: Jenkins Shared Libraries in Grrovy
+  tags:
+    - java
+    - jenkins
+    - ci-cd
+    - website
+spec:
+  type: service
+  lifecycle: production
+  owner: infra-team
